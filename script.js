@@ -36,7 +36,7 @@ function playRound(playerSelection, computerSelection)
                 else
                     return `You Lose! ${computerSelection} beats ${playerSelection}`;
             }
-            case (Paper):
+            case ("Paper"):
             {
                 if (computerSelection === "Rock")
                     return `You Win! ${playerSelection} beats ${computerSelection}`;
@@ -55,6 +55,24 @@ function playRound(playerSelection, computerSelection)
     }
 }
 
-const playerSelection = getPlayerChoice();
-const computerSelection = getComputerChoice();
-console.log(playRound(playerSelection, computerSelection));
+function game()
+{
+    let playerWins = 0;
+    let computerWins = 0;
+
+    for (let roundNumber = 1; roundNumber < 6; roundNumber++)
+    {
+        let roundResult = playRound( getPlayerChoice(), getComputerChoice() );
+        
+        if(roundResult.charAt(4) === "W")
+            playerWins++;
+        else if (roundResult.charAt(4) === "L")
+            computerWins++;
+
+        //If roundResult is DRAW, no wins are given!
+        
+        console.log(`Round ${roundNumber}: ${roundResult}`);
+    }
+
+    console.log(`End of the game! You ${playerWins > computerWins ? "WIN" : "LOSE"} ${playerWins} - ${computerWins}`);
+}
