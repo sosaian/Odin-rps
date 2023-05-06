@@ -10,6 +10,17 @@ function getComputerChoice()
                 return "Scissors";
 }
 
+function getPlayerChoice()
+{
+        let choice = prompt("Rock, Paper or Scissors?").toLowerCase();
+        
+        choice = choice.charAt(0).toUpperCase() + choice.slice(1);
+
+        return choice;
+
+        // For now I won't validate user input...
+}
+
 function playRound(playerSelection, computerSelection)
 {
     if (playerSelection === computerSelection)
@@ -44,6 +55,6 @@ function playRound(playerSelection, computerSelection)
     }
 }
 
-const playerSelection = "Rock";
+const playerSelection = getPlayerChoice();
 const computerSelection = getComputerChoice();
 console.log(playRound(playerSelection, computerSelection));
