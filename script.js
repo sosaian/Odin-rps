@@ -55,24 +55,24 @@ function playRound(playerSelection, computerSelection)
     }
 }
 
-function game()
-{
-    let playerWins = 0;
-    let computerWins = 0;
+// function game()
+// {
+//     let playerWins = 0;
+//     let computerWins = 0;
 
-    for (let roundNumber = 1; roundNumber < 6; roundNumber++)
-    {
-        let roundResult = playRound( getPlayerChoice(), getComputerChoice() );
+//     for (let roundNumber = 1; roundNumber < 6; roundNumber++)
+//     {
+//         let roundResult = playRound( getPlayerChoice(), getComputerChoice() );
         
-        if(roundResult.charAt(4) === "W")
-            playerWins++;
-        else if (roundResult.charAt(4) === "L")
-            computerWins++;
+//         if(roundResult.charAt(4) === "W")
+//             playerWins++;
+//         else if (roundResult.charAt(4) === "L")
+//             computerWins++;
 
-        //If roundResult is DRAW, no wins are given!
+//         //If roundResult is DRAW, no wins are given!
         
-        console.log(`Round ${roundNumber}: ${roundResult}`);
-    }
+//         console.log(`Round ${roundNumber}: ${roundResult}`);
+//     }
 
-    console.log(`End of the game! You ${playerWins > computerWins ? "WIN" : "LOSE"} ${playerWins} - ${computerWins}`);
-}
+//     console.log(`End of the game! You ${playerWins > computerWins ? "WIN" : "LOSE"} ${playerWins} - ${computerWins}`);
+// }
