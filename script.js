@@ -46,23 +46,18 @@ function playRound(playerSelection, computerSelection)
 
 function playRoundGUI(playerSelection)
 {
-    const playerWins = 0;
-    const computerWins = 0;
+    const playerWins = document.querySelector("#playerWins");
+    const computerWins = document.querySelector("#computerWins");
 
-    let roundResult = playRound( getPlayerChoice(), getComputerChoice() );
+    const roundResult = playRound( playerSelection, getComputerChoice() );
     
     if(roundResult.charAt(4) === "W")
-        playerWins++;
+        playerWins.textContent = parseInt(playerWins.textContent) + 1;
     else if (roundResult.charAt(4) === "L")
-        computerWins++;
+        computerWins.textContent = parseInt(computerWins.textContent) + 1;
 
-    //If roundResult is DRAW, no wins are given!
-    
-    console.log(`Round ${roundNumber}: ${roundResult}`);
-
-    console.log(`End of the game! You ${playerWins > computerWins ? "WIN" : "LOSE"} ${playerWins} - ${computerWins}`);
-    
     const scoreFeed = document.querySelector("#scoreFeed");
+    scoreFeed.textContent = roundResult;
 }
 
 const buttons = document.querySelectorAll(".rps");
