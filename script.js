@@ -44,6 +44,37 @@ function playRound(playerSelection, computerSelection)
     }
 }
 
+function restartGame()
+{
+    const resetButton = document.querySelector("#resetButton");
+    const playerWins = document.querySelector("#playerWins");
+    const computerWins = document.querySelector("#computerWins");
+    const scoreFeed = document.querySelector("#scoreFeed");
+
+    playerWins.textContent = 0;
+    computerWins.textContent = 0;
+    scoreFeed.textContent = "First to 5 rounds WINS";
+    resetButton.remove();
+}
+
+function finishGame()
+{
+    const buttons = document.querySelectorAll(".rps");
+    buttons.forEach( (button) =>
+    {
+        button.removeEventListener("click", playRoundGUI);
+    }
+    );
+
+    const resetButton = document.createElement("button");
+    resetButton.textContent = "RESTART";
+    resetButton.id = "resetButton";
+    resetButton.addEventListener("click", restartGame);
+
+    const body = document.querySelector("body");
+    body.appendChild(resetButton);
+}
+
 function playRoundGUI(playerSelection)
 {
     const playerWins = document.querySelector("#playerWins");
@@ -71,6 +102,8 @@ function playRoundGUI(playerSelection)
     else
     {
         scoreFeed.textContent = `End of the game! You ${playerScore > computerScore ? "WIN" : "LOSE"} ${playerScore} - ${computerScore}`;
+
+        finishGame();
     }
 }
 
