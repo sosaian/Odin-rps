@@ -78,7 +78,7 @@ const buttons = document.querySelectorAll(".rps");
 
 buttons.forEach( (button) =>
 {
-    button.addEventListener("click", (e) => {playRoundGUI(e)});
+    button.addEventListener("click", (e) => {playRoundGUI(e.target.id)});
 }
 );
 
