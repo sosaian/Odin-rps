@@ -55,43 +55,36 @@ function playRound(playerSelection, computerSelection)
     }
 }
 
+function playRoundGUI(playerSelection)
+{
+    const playerWins = 0;
+    const computerWins = 0;
+
+    let roundResult = playRound( getPlayerChoice(), getComputerChoice() );
+    
+    if(roundResult.charAt(4) === "W")
+        playerWins++;
+    else if (roundResult.charAt(4) === "L")
+        computerWins++;
+
+    //If roundResult is DRAW, no wins are given!
+    
+    console.log(`Round ${roundNumber}: ${roundResult}`);
+
+    console.log(`End of the game! You ${playerWins > computerWins ? "WIN" : "LOSE"} ${playerWins} - ${computerWins}`);
+    
+    const scoreFeed = document.querySelector("#scoreFeed");
+    scoreFeed.textContent = 
+}
+
 const buttons = document.querySelectorAll(".rps");
 
 buttons.forEach( (button) =>
 {
-    button.addEventListener("click", (e) => console.log(playRound(e.target.id ,getComputerChoice())))
+    button.addEventListener("click", (e) => {playRoundGUI(e)});
 }
 );
 
+const playerName = document.querySelector("#playerName");
 
-// const rock = document.querySelector("#rock");
-// rock.addEventListener("click", (e) => console.log(playRound("Rock",getComputerChoice())));
-
-// const paper = document.querySelector("#paper");
-// paper.addEventListener("click", (e) => console.log(playRound("Paper",getComputerChoice())));
-
-// const scissors = document.querySelector("#scissors");
-// scissors.addEventListener("click", (e) => console.log(playRound("Scissors",getComputerChoice())));
-
-
-// function game()
-// {
-//     let playerWins = 0;
-//     let computerWins = 0;
-
-//     for (let roundNumber = 1; roundNumber < 6; roundNumber++)
-//     {
-//         let roundResult = playRound( getPlayerChoice(), getComputerChoice() );
-        
-//         if(roundResult.charAt(4) === "W")
-//             playerWins++;
-//         else if (roundResult.charAt(4) === "L")
-//             computerWins++;
-
-//         //If roundResult is DRAW, no wins are given!
-        
-//         console.log(`Round ${roundNumber}: ${roundResult}`);
-//     }
-
-//     console.log(`End of the game! You ${playerWins > computerWins ? "WIN" : "LOSE"} ${playerWins} - ${computerWins}`);
-// }
+playerName.textContent = prompt("How would you like to be called?");
