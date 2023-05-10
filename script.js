@@ -66,16 +66,16 @@ function restartGame()
 
 function finishGame()
 {
-    const resetButton = document.createElement("button");
-    resetButton.textContent = "RESTART";
-    resetButton.id = "resetButton";
-    resetButton.addEventListener("click", restartGame);
+    const resetButtonElement = document.createElement("button");
+    resetButtonElement.textContent = "RESTART";
+    resetButtonElement.id = "resetButton";
+    resetButtonElement.addEventListener("click", restartGame);
 
     const body = document.querySelector("body");
-    body.appendChild(resetButton);
+    body.appendChild(resetButtonElement);
 
-    const buttons = document.querySelectorAll(".rps");
-    buttons.forEach(button =>
+    const rpsButtons = document.querySelectorAll(".rps");
+    rpsButtons.forEach(button =>
     {
         button.disabled = true;
     }
@@ -84,11 +84,11 @@ function finishGame()
 
 function playRoundGUI(playerSelection)
 {
-    const playerWins = document.querySelector("#playerWins");
-    const computerWins = document.querySelector("#computerWins");
+    const playerWinsElement = document.querySelector("#playerWins");
+    const computerWinsElement = document.querySelector("#computerWins");
 
-    let playerScore = parseInt(playerWins.textContent);
-    let computerScore = parseInt(computerWins.textContent);
+    let playerScore = parseInt(playerWinsElement.textContent);
+    let computerScore = parseInt(computerWinsElement.textContent);
 
     const roundResult = playRound(playerSelection, getComputerChoice());
     
@@ -97,31 +97,31 @@ function playRoundGUI(playerSelection)
     else if (roundResult.charAt(4) === "L")
         computerScore++;
 
-    playerWins.textContent = playerScore;
-    computerWins.textContent = computerScore;
+    playerWinsElement.textContent = playerScore;
+    computerWinsElement.textContent = computerScore;
 
-    const scoreFeed = document.querySelector("#scoreFeed");
+    const scoreFeedElement = document.querySelector("#scoreFeed");
 
     if( playerScore < 5 && computerScore < 5 )
     {
-        scoreFeed.textContent = roundResult;
+        scoreFeedElement.textContent = roundResult;
     }
     else
     {
-        scoreFeed.textContent = `End of the game! You ${playerScore > computerScore ? "WIN" : "LOSE"} ${playerScore} - ${computerScore}`;
+        scoreFeedElement.textContent = `End of the game! You ${playerScore > computerScore ? "WIN" : "LOSE"} ${playerScore} - ${computerScore}`;
 
         finishGame();
     }
 }
 
-const buttons = document.querySelectorAll(".rps");
+const rpsButtons = document.querySelectorAll(".rps");
 
-buttons.forEach(button =>
+rpsButtons.forEach(button =>
 {
     button.addEventListener("click", (e) => {playRoundGUI(e.target.id)});
 }
 );
 
-const playerName = document.querySelector("#playerName");
+const playerNameElement = document.querySelector("#playerName");
 
-playerName.textContent = prompt("How would you like to be called?");
+playerNameElement.textContent = prompt("How would you like to be called?");
