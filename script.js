@@ -1,14 +1,9 @@
 function getComputerChoice()
 {
-        let randomNumber = Math.floor(Math.random() * 100);
-
-        if (randomNumber > 66)
-                return "Rock";
-        else if (randomNumber > 33)
-                return "Paper";
-        else
-                return "Scissors";
-}
+    const choices = ["Rock", "Paper", "Scissors"];
+    const randomNumber = Math.floor(Math.random() * choices.length);
+    return choices[randomNumber];
+};
 
 function playRound (playerSelection, computerSelection)
 {
