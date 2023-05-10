@@ -55,6 +55,25 @@ function playRound(playerSelection, computerSelection)
     }
 }
 
+const buttons = document.querySelectorAll(".rps");
+
+buttons.forEach( (button) =>
+{
+    button.addEventListener("click", (e) => console.log(playRound(e.target.id ,getComputerChoice())))
+}
+);
+
+
+// const rock = document.querySelector("#rock");
+// rock.addEventListener("click", (e) => console.log(playRound("Rock",getComputerChoice())));
+
+// const paper = document.querySelector("#paper");
+// paper.addEventListener("click", (e) => console.log(playRound("Paper",getComputerChoice())));
+
+// const scissors = document.querySelector("#scissors");
+// scissors.addEventListener("click", (e) => console.log(playRound("Scissors",getComputerChoice())));
+
+
 // function game()
 // {
 //     let playerWins = 0;
