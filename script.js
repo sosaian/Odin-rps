@@ -49,15 +49,29 @@ function playRoundGUI(playerSelection)
     const playerWins = document.querySelector("#playerWins");
     const computerWins = document.querySelector("#computerWins");
 
-    const roundResult = playRound( playerSelection, getComputerChoice() );
+    let playerScore = parseInt(playerWins.textContent);
+    let computerScore = parseInt(computerWins.textContent);
+
+    const roundResult = playRound(playerSelection, getComputerChoice());
     
     if(roundResult.charAt(4) === "W")
-        playerWins.textContent = parseInt(playerWins.textContent) + 1;
+        playerScore++;
     else if (roundResult.charAt(4) === "L")
-        computerWins.textContent = parseInt(computerWins.textContent) + 1;
+        computerScore++;
+
+    playerWins.textContent = playerScore;
+    computerWins.textContent = computerScore;
 
     const scoreFeed = document.querySelector("#scoreFeed");
-    scoreFeed.textContent = roundResult;
+
+    if( playerScore !== 5 && computerScore !== 5 )
+    {
+        scoreFeed.textContent = roundResult;
+    }
+    else
+    {
+        scoreFeed.textContent = `End of the game! You ${playerScore > computerScore ? "WIN" : "LOSE"} ${playerScore} - ${computerScore}`;
+    }
 }
 
 const buttons = document.querySelectorAll(".rps");
