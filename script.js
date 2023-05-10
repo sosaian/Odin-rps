@@ -55,17 +55,17 @@ function restartGame()
     computerWins.textContent = 0;
     scoreFeed.textContent = "First to 5 rounds WINS";
     resetButton.remove();
+
+    const buttons = document.querySelectorAll(".rps");
+    buttons.forEach(button =>
+    {
+        button.disabled = false;
+    }
+    );
 }
 
 function finishGame()
 {
-    const buttons = document.querySelectorAll(".rps");
-    buttons.forEach( (button) =>
-    {
-        button.removeEventListener("click", playRoundGUI);
-    }
-    );
-
     const resetButton = document.createElement("button");
     resetButton.textContent = "RESTART";
     resetButton.id = "resetButton";
@@ -73,6 +73,13 @@ function finishGame()
 
     const body = document.querySelector("body");
     body.appendChild(resetButton);
+
+    const buttons = document.querySelectorAll(".rps");
+    buttons.forEach(button =>
+    {
+        button.disabled = true;
+    }
+    );
 }
 
 function playRoundGUI(playerSelection)
@@ -95,7 +102,7 @@ function playRoundGUI(playerSelection)
 
     const scoreFeed = document.querySelector("#scoreFeed");
 
-    if( playerScore !== 5 && computerScore !== 5 )
+    if( playerScore < 5 && computerScore < 5 )
     {
         scoreFeed.textContent = roundResult;
     }
@@ -109,7 +116,7 @@ function playRoundGUI(playerSelection)
 
 const buttons = document.querySelectorAll(".rps");
 
-buttons.forEach( (button) =>
+buttons.forEach(button =>
 {
     button.addEventListener("click", (e) => {playRoundGUI(e.target.id)});
 }
