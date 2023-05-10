@@ -10,17 +10,6 @@ function getComputerChoice()
                 return "Scissors";
 }
 
-function getPlayerChoice()
-{
-        let choice = prompt("Rock, Paper or Scissors?").toLowerCase();
-        
-        choice = choice.charAt(0).toUpperCase() + choice.slice(1);
-
-        return choice;
-
-        // For now I won't validate user input...
-}
-
 function playRound(playerSelection, computerSelection)
 {
     if (playerSelection === computerSelection)
@@ -74,7 +63,6 @@ function playRoundGUI(playerSelection)
     console.log(`End of the game! You ${playerWins > computerWins ? "WIN" : "LOSE"} ${playerWins} - ${computerWins}`);
     
     const scoreFeed = document.querySelector("#scoreFeed");
-    scoreFeed.textContent = 
 }
 
 const buttons = document.querySelectorAll(".rps");
