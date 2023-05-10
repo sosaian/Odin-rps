@@ -67,6 +67,20 @@ function finishGame()
     );
 }
 
+function updateScoreboard(playerScore, computerScore)
+{
+    document.querySelector("#playerWins").textContent = playerScore;
+    document.querySelector("#computerWins").textContent = computerScore;
+}
+  
+function displayGameResult(playerScore, computerScore)
+{
+    if (playerScore > computerScore)
+        return `End of the game! You WIN ${playerScore} - ${computerScore}`;
+    else
+        return `End of the game! You LOSE ${playerScore} - ${computerScore}`;
+}
+
 function playRoundGUI(playerSelection)
 {
     const playerWinsElement = document.querySelector("#playerWins");
@@ -82,8 +96,9 @@ function playRoundGUI(playerSelection)
     else if (roundResult.charAt(4) === "L")
         computerScore++;
 
-    playerWinsElement.textContent = playerScore;
-    computerWinsElement.textContent = computerScore;
+    //If roundResult is DRAW, no wins are given!
+
+    updateScoreboard(playerScore, computerScore);
 
     const scoreFeedElement = document.querySelector("#scoreFeed");
 
@@ -93,7 +108,7 @@ function playRoundGUI(playerSelection)
     }
     else
     {
-        scoreFeedElement.textContent = `End of the game! You ${playerScore > computerScore ? "WIN" : "LOSE"} ${playerScore} - ${computerScore}`;
+        scoreFeedElement.textContent = displayGameResult(playerScore, computerScore);
 
         finishGame();
     }
